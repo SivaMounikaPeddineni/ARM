@@ -1,0 +1,25 @@
+;Largest of three numbers
+; Numbers are stored in R1,R2,R3 Result is stored in R5 register   
+	THUMB
+	 AREA     factorial, CODE, READONLY
+     EXPORT __main
+     ENTRY 
+__main  FUNCTION	
+	
+     MOV R1,#0x00000020
+	 MOV R2,#0x00000024
+	 MOV R3,#0x00000010
+	 CMP R1,R2
+     ITE GE
+     MOVGE R4,R1
+     MOVLT R4,R2
+     CMP R4,R3 
+     ITE GE
+     MOVGE R5,R4
+     MOVLT R5,R3
+
+stop    B stop ; stop program
+     ENDFUNC
+     END 
+	 
+ 

@@ -1,0 +1,21 @@
+;Find whether its even or odd number
+;Number is stored in R1
+;remainder is stored in R4
+;remainder= dividend - quotient * divisor
+;if R4=1 => odd else even
+    
+	THUMB
+	 AREA     factorial, CODE, READONLY
+     EXPORT __main
+     ENTRY 
+__main  FUNCTION	 	
+     MOV R1,#0x00000022
+	 MOV R2,#0x00000002
+	 UDIV R3,R1,R2
+	 MLS R4,R2,R3,R1
+
+stop    B stop ; stop program
+     ENDFUNC
+     END 
+	 
+ 

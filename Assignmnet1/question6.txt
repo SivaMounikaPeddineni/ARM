@@ -1,0 +1,29 @@
+;GCD of two numbers
+;Numbers are stored in R1,R2 
+;Final GCD value is observed in R1 or R2 register(finally contents of R1=R2)
+    
+	THUMB
+	 AREA     factorial, CODE, READONLY
+     EXPORT __main
+     ENTRY 
+__main  FUNCTION	
+; IGNORE THIS PART 	
+      MOV R1,#0x0000003c
+      MOV R2,#0x00000030
+	  CMP R1,R2
+	  BNE Loop
+	  
+Loop  CMP R1,R2
+	  ITE GT 
+	  SUBGT R1,R1,R2
+	  SUBLE R2,R2,R1
+	  CMP R1,R2
+	  BNE Loop
+	  BEQ stop
+	 
+	  
+stop    B stop ; stop program
+     ENDFUNC
+     END 
+	 
+ 
