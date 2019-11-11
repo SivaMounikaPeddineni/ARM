@@ -1,0 +1,47 @@
+;Logic
+;result=1  (s2)
+;product =1 (s1)
+;i=1  (r2)
+;x (s1)
+;while (i<n)
+;product= product * X / i
+;result= result+ product
+;i++
+     THUMB
+	  AREA     factorial, CODE, READONLY
+      EXPORT __main
+      ENTRY 
+__main  FUNCTION	
+; IGNORE THIS PART 
+
+;Store X value
+      VLDR.F32 s0, =20
+	
+;Store no of iterations
+      mov r1,#0x00000019
+	 
+;iterations	count i
+	  mov r2,#0x00000001
+	  mov r3,#0x00000001
+      VLDR.F32 s4, =1
+	  VLDR.F32 s5, =1
+
+;Product s1	 
+	  VLDR.F32 s1, =1
+
+;result s2	 
+	  VLDR.F32 s2, =1
+	 	 	
+Loop  VDIV.F32 s3,s0,s4
+      VMUL.F32 s1,s1,s3
+	  VADD.F32 s2,s2,s1
+      ADD r2,r2,r3
+	  VADD.F32 s4,s4,s5
+	  CMP r2,r1	
+	  BLT Loop
+	  
+	  
+	
+stop    B stop ; stop program
+      ENDFUNC
+      END 
